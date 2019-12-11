@@ -13,7 +13,7 @@ export const apiKey =
 
 const db = app.database();
 
-export default function Dashboard() {
+export default function Dashboard({ creatingEventTest }) {
   // const [hasId, setHasId] = useState(localStorage.getItem('renderSurvey'));
   const [hasId, setHasId] = useState(false);
   const [eventID, setEventID] = useState();
@@ -22,6 +22,7 @@ export default function Dashboard() {
     //creating new events in firebase
     const id = Math.random().toString(36).substr(2, 9)
     alert('Success! Your Event Id is, ' + id)
+    creatingEventTest(id);
     setEventID(id);
 
     db.ref('events/' + id).set({
